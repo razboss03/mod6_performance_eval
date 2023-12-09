@@ -1,9 +1,16 @@
 // Require the functionality we need to use:
 var http = require('http'),
 	url = require('url'),
-	mime = require('mime'),
 	path = require('path'),
 	fs = require('fs');
+
+let mime;
+
+import('mime').then(module => {
+    mime = module.default;
+}).catch(err => {
+    console.error('Failed to load MIME module', err);
+});
 
 	console.log("server started");
 // Make a simple fileserver for all of our static content.
